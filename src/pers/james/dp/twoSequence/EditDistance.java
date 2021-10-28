@@ -6,7 +6,8 @@ package pers.james.dp.twoSequence;
  */
 public class EditDistance {
     public int minDistance(String word1, String word2) {
-        //dp[i][j] word1的前i个字符 和 word2的前j个字符，形成最小变化
+        //dp[i][j] word1的前i个字符 和 word2的前j个字符匹配，形成最小变化
+        //为什么数组长度都要+1，因为表示前i，j个字符，所以第一个位是前0个字符，多了这个第一个位置，所以长度+1
         int[][] dp = new int[word1.length() + 1][word2.length() + 1];
         for (int i = 0; i < word1.length() + 1; i++) {
             //word1 的前i个字符匹配word2的前0个字符，word1需要都删掉

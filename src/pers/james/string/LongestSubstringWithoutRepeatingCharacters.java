@@ -8,7 +8,8 @@ import java.util.Set;
 
 public class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
-        String s = "abcabcbb";
+//        String s = "abcabcbb";
+        String s = "abba";
         System.out.println(lengthOfLongestSubstring(s));
     }
 //    public static int lengthOfLongestSubstring(String s) {
@@ -40,6 +41,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
         // try to extend the range [i, j]
         for (int j = 0, i = 0; j < n; j++) {
             if (map.containsKey(s.charAt(j))) {
+                // 这里必须取max，因为找到重复的数可能是在i之前的，如果是i之前的数是不用刷新i值得，比如（"abba"）
                 i = Math.max(map.get(s.charAt(j))+1, i);
             }
             ans = Math.max(ans, j - i + 1);

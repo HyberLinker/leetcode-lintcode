@@ -26,7 +26,7 @@ public class TopologicalSorting {
                     indegrees.put(neighbor, indegrees.get(neighbor)+1);
                 }
             }
-
+ 
         }
 
         //initial result: put the nodes which has the 0 indegree in the result list

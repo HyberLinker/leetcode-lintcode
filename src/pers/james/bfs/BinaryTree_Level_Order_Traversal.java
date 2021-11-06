@@ -2,10 +2,7 @@ package pers.james.bfs;
 
 import pers.james.TreeNode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class BinaryTree_Level_Order_Traversal {
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -27,6 +24,7 @@ public class BinaryTree_Level_Order_Traversal {
             }
             result.add(levelResult);
         }
+        Collections.reverse(result);
         return result;
     }
 }

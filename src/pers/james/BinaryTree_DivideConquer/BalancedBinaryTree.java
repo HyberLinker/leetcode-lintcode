@@ -21,14 +21,15 @@ public class BalancedBinaryTree {
         return new ReturnType(Math.max(left.depth, right.depth)+1, true);
 
     }
-}
+    class ReturnType {
+        int depth;
+        boolean balanced;
 
-class ReturnType {
-    int depth;
-    boolean balanced;
-
-    public ReturnType(int depth, boolean balanced) {
-        this.depth = depth;
-        this.balanced = balanced;
+        public ReturnType(int depth, boolean balanced) {
+            this.depth = depth;
+            this.balanced = balanced;
+        }
     }
 }
+
+

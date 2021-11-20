@@ -104,9 +104,55 @@ public class QuickSort {
         return pivotNew;
     }
 
+    public static void quickSort3(int[] arr, int start, int end) {
+        if (arr == null || arr.length == 0) {
+            return;
+        }
+        partition3(arr, start, end);
+    }
+
+    /**
+     * 128 arr[leftIndex] < pivot, 如果数组数字全部相同，leftIndex 和 rightIndex都不会变化进入死循环；
+     *      改进1:138,139 每次循环leftIndex++ rightIndex-- 防止两个index不变的情况；
+     *      但是这种仍然会导致Stack Overflow，因为while循环中判断是leftIndex < rightIndex，没有相等情况，所以出while后两个index可能是 leftIndex > rightIndex 或者 leftIndex = rightIndex；
+     *      如果是leftIndex = rightIndex,146 和 147 partition3(arr, start, leftIndex);partition3(arr, leftIndex+1, end);写法没问题，但是leftIndex > rightIndex这种情况会导致Stack Overflow，因为重复计算了
+     *
+     *      改进2：让while条件包括=，这样出while后就是 leftIndex < rightIndex 一种情况，然后调整146 和 147
+     *
+     *
+     * 128 arr[leftIndex] <= pivot, 如果数组数字全部相同。第一次partition会把所有数放到左边，导致partition之后数组长度没有变化，进入Stack Overflow
+     * @param arr
+     * @param start
+     * @param end
+     */
+    private static void partition3(int[] arr, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        int pivot = arr[(start+end)/2];
+        int leftIndex = start;
+        int rightIndex = end;
+        while (leftIndex <= rightIndex) {
+            while (leftIndex <= rightIndex && arr[leftIndex] < pivot) { //这里arr[leftIndex] < pivot，表示如果和pivot相同就不动；但是如果数组中的数全部相同，这里两个while循环都进不去，left和right一直不会变化，进入了死循环
+                leftIndex++;
+            }
+            while (leftIndex <= rightIndex && arr[rightIndex] > pivot) {
+                rightIndex--;
+            }
+            if (leftIndex <= rightIndex) {
+                swap(arr, leftIndex, rightIndex);
+                leftIndex++;
+                rightIndex--;
+            }
+        }
+
+        partition3(arr, start, rightIndex);
+        partition3(arr, leftIndex, end);
+    }
+
     public static void main(String[] args) {
-        int[] a = {3, 1, 2, 4, 9, 6};
-        quickSort1(a, 0, a.length - 1);
+        int[] a = {3, 1, 2, 4, 9, 6}; //1, 1, 1, 1, 1, 1
+        quickSort3(a, 0, a.length - 1);
         //输出结果
         System.out.println(Arrays.toString(a));
     }

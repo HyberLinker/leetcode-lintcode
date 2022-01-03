@@ -133,7 +133,7 @@ public class QuickSort {
         int leftIndex = start;
         int rightIndex = end;
         while (leftIndex <= rightIndex) {
-            while (leftIndex <= rightIndex && arr[leftIndex] < pivot) { //这里arr[leftIndex] < pivot，表示如果和pivot相同就不动；但是如果数组中的数全部相同，这里两个while循环都进不去，left和right一直不会变化，进入了死循环
+            while (leftIndex <= rightIndex && arr[leftIndex] < pivot) { //这里arr[leftIndex] < pivot，表示如果和pivot相同也要移动；但是如果数组中的数全部相同，这里两个while循环都进不去，left和right一直不会变化，进入了死循环
                 leftIndex++;
             }
             while (leftIndex <= rightIndex && arr[rightIndex] > pivot) {
@@ -150,6 +150,10 @@ public class QuickSort {
         partition3(arr, leftIndex, end);
     }
 
+    /**
+     * 以quickSort3 解法为准
+     * @param args
+     */
     public static void main(String[] args) {
         int[] a = {3, 1, 2, 4, 9, 6}; //1, 1, 1, 1, 1, 1
         quickSort3(a, 0, a.length - 1);

@@ -2,10 +2,11 @@ package pers.james.binarySearch;
 
 public class SearchInsertPosition {
     /**
+     * 刷 代码随想录 的时候，看leetcode中文社区的一个最高分题解。思路无关所谓的区间不变性
      *
      * 1. 抽象成找第一个大于等于target数的index nums[pos-1] < target <= nums[pos]
      * 2. 注意while left<right, 退出循环left=right
-     * 3. 注意mid取值是否要加1
+     * 3. 注意mid取值是否要加1（出现left=mid需要+1）不然会死循环
      * 4. 区间变化left,right取值
      * @param nums
      * @param target

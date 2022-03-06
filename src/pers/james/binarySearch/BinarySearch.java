@@ -1,5 +1,10 @@
 package pers.james.binarySearch;
 
+/**
+ * 704. Binary Search
+ * easy
+ * 最终版本见search2即可
+ */
 public class BinarySearch {
     /**
      * 出自 代码随想录
@@ -128,9 +133,39 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * 终极版本
+     * 直接拿来用
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int search3(int[] nums, int target) {
+        // 避免当 target 小于nums[0] nums[nums.length - 1]时多次循环运算
+        if (target < nums[0] || target > nums[nums.length - 1]) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int mid = left + (right - left)/2;
+            if (nums[mid] >= target) {
+                right = mid;
+            }else{
+                left = mid + 1;
+            }
+            System.out.format("left:[%d], right:[%d]\n", left, right);
+        }
+        if (nums[left] == target) {
+            //防止left=right, 且 nums[left]=target
+            return left;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         int[] nums = {-1,0,3,5,9,12};
         int target = 9;
-        searchChange(nums, target);
+        System.out.println(search3(nums, target));
     }
 }

@@ -1,5 +1,9 @@
 package pers.james.binarySearch;
 
+/**
+ * 35. Search Insert Position
+ * esay
+ */
 public class SearchInsertPosition {
     /**
      * 刷 代码随想录 的时候，看leetcode中文社区的一个最高分题解。思路无关所谓的区间不变性

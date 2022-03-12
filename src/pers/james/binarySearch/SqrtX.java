@@ -11,7 +11,9 @@ public class SqrtX {
         int right = x;
         while (left < right) {
             int mid = left + (right - left) / 2 + 1; //出现left=mid，这里要+1，不然死循环
-            if (mid > x/mid) { //mid*mid 有可能溢出 可以用mid > x / mid 或者 Math.pow是double
+            // long temp = mid*mid; //不论long还是int，都会越界变成负数。
+            // 或者可以使用pow，double temp = Math.pow(mid, 2);
+            if (mid > x/mid) {
                 right = mid - 1;
             }else if (mid < x/mid) {
                 left = mid;

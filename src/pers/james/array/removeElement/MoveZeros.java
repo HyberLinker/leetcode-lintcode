@@ -1,6 +1,8 @@
 package pers.james.array.removeElement;
 
 /**
+ * 283. Move Zeroes
+ * easy
  * @author JamesLiu
  * @date 2022年01月15日 18:42:00
  */

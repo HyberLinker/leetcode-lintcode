@@ -1,7 +1,10 @@
 package pers.james.array.removeElement;
 
 
-
+/**
+ * 26. Remove Duplicates from Sorted Array
+ * easy
+ */
 public class RemoveDuplicatesfromSortedArray {
     public static void main(String[] args) {
         int[] nums = {0,0,0,1,2,2,3};

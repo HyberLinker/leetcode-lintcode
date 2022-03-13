@@ -1,5 +1,9 @@
 package pers.james.array.removeElement;
 
+/**
+ * 27. Remove Element
+ * esay
+ */
 public class RemoveElement {
     public static void main(String[] args) {
         int[] nums = {3,2,2,3};

@@ -46,4 +46,19 @@ public class RemoveLinkedListElements {
         removeElements(dummyEnd, 6);
 
     }
+
+    private ListNode buildNodeList(int[] head) {
+        ListNode dummyEnd = new ListNode(0);
+        ListNode trueEnd = null;
+        for (int i = head.length - 1; i >= 0 ; i--) {
+            ListNode node = new ListNode(head[i]);
+            if (i == head.length - 1) {
+                trueEnd = node;
+            }
+            node.next = dummyEnd;
+            dummyEnd = node;
+        }
+        trueEnd.next = null;
+        return dummyEnd;
+    }
 }
